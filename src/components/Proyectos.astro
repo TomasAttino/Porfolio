@@ -1,0 +1,110 @@
+---
+import ItemProyecto from './ItemProyecto.astro'; 
+
+const PROYECTS = [
+     {
+        title: "CSGO-Skin-Market - Taller Web II",
+        description: "Desarrollo de un Marketplace Fullstack para la compra y venta de skins de CS:GO. Construí el Frontend con Angular, implementando componentes reutilizables y consumo de API REST. El Backend fue desarrollado con Node.js, Express y Prisma, gestionando una base de datos PostgreSQL. Incluye sistema de autenticación segura con JWT y gestión de estado.",
+        imgUrl: [
+            "/images/skin-market-1.webp","/images/skin-market-2.jpg","/images/skin-market-3.webp"
+        ],
+        linkProyecto: "https://github.com/TomasAttino/CSGO-Skin-Market",
+        date: "Noviembre, 2025",
+        tecnologias: [
+        {
+            name: "Angular", icon: "./public/iconos/angular_logo.svg"
+        },
+        {
+            name: "Node.Js", icon: "./public/iconos/node_logo.svg"
+        },
+        {
+            name: "Express", icon: "./public/iconos/express_logo.svg"
+        },
+        {
+            name: "Prsima", icon: "./public/iconos/prisma_logo.svg"
+        }      ,
+        {
+            name: "PostgreSQL", icon: "./public/iconos/postsql_logo.svg"
+        }
+        ]
+    },
+    {
+        title: "IA Generativa y Clasificación de Texto en .NET - Programacion Web III",
+        description: "Desarrollo de una solución web en .NET 8 que integra inteligencia artificial híbrida. Implementé ML.NET para clasificación de texto local consumiendo la API de Hugging Face para generación de contenido con LLMs. Arquitectura robusta en ASP.NET MVC aplicando patrones Repository y Unit of Work con Entity Framework Core y SQL Server.",
+        imgUrl: [
+            "/images/IAgen4.png","/images/IAgen1.png","/images/IAgen3.png","/images/IAgen2.png"
+        ],
+        linkProyecto: "https://github.com/TomasAttino/IAGenerativa.NET",
+        date: "Julio, 2025",
+        tecnologias: [
+        {
+            name: ".NET", icon: "./public/iconos/.net_logo.png"
+        },
+        {
+            name: "HuggingFace", icon: "./public/iconos/hf_logo.svg"
+        },
+        {
+            name: "SQL Server", icon: "./public/iconos/ssms_logo.svg"
+        },
+        {
+            name: "ML.NET", icon: "./public/iconos/ml_logo.png"
+        }
+        ]
+    },
+    {
+        title: "Juego medieval de estrategia - Taller Web I",
+        description: "Este juego nos permite iniciar una partida que se desarrolla entre dos jugadores por turnos pudiendole equipar items, comprar en el mercado e interactuar en la taberna. Tambien tiene implementado un chat en tiempo real para que los jugadores puedan comunicarse entre ellos.",
+        imgUrl: ["/images/medieval1.png","/images/medieval2.png","/images/medieval3.png","/images/medieval4.png","/images/medieval5.png","/images/medieval6.png"],
+        linkProyecto: "https://github.com/TomasAttino/Juego-Medieval",
+        date: "Julio, 2025",
+        tecnologias: [
+        {
+            name: "Java", icon: "./public/iconos/java_logo.svg"
+        },
+        {
+            name: "Spring", icon: "./public/iconos/spring_logo.svg"
+        },
+        {
+            name: "Docker", icon: "./public/iconos/docker_logo.svg"
+        },
+        {
+            name: "Playwrigth", icon: "./public/iconos/pw_logo.svg"
+        },
+         {
+            name: "WebSockets", icon: "./public/iconos/wb_logo.svg"
+        }
+        ]
+    },
+    {
+        title: "CurioQuest - Programacion Web II",
+        description: "El juego permite a los usuarios registrarse, jugar partidas respondiendo preguntas de opción múltiple, ver rankings y desafiar a otros jugadores. El sistema también cuenta con roles de editor y administrador, que gestionan preguntas y generan reportes detallados sobre la actividad del juego.",
+        imgUrl: [
+            "/images/preguntas6.png","/images/preguntas1.png","/images/preguntas2.png","/images/preguntas3.png","/images/preguntas4.png","/images/preguntas5.png"
+        ],
+        linkProyecto: "https://github.com/TomasAttino/CurioQuest.git",
+        date: "Octubre, 2024",
+        tecnologias: [
+        {
+            name: "PHP", icon: "./public/iconos/php_dark.svg"
+        },
+        {
+            name: "MySQL", icon: "./public/iconos/mysql_logo.webp"
+        },
+        {
+            name: "Apache", icon: "./public/iconos/apache_logo.png"
+        },
+        {
+            name: "Composer", icon: "./public/iconos/composer_logo.svg"
+        }
+        ]
+    }
+]
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">
+    {
+        PROYECTS.map((proyecto) => (
+            <ItemProyecto {...proyecto} />
+        ))
+    }
+</ol>

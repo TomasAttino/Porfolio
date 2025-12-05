@@ -1,0 +1,131 @@
+---
+interface Props {
+  images: string[];
+  projectTitle: string;
+}
+
+const { images, projectTitle } = Astro.props;
+---
+
+<div class="relative w-full mb-4">
+  <div class="relative h-56 overflow-hidden rounded-lg md:h-96 bg-gray-800">
+    {images.map((img, index) => (
+      <div 
+        class={`carousel-item duration-700 ease-in-out absolute inset-0 transition-opacity ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+        data-carousel-item={index}
+      >
+        <img 
+          src={img} 
+          class="absolute block w-full h-full object-cover object-top"
+          alt={`${projectTitle} - imagen ${index + 1}`}
+        />
+      </div>
+    ))}
+  </div>
+
+  {images.length > 1 && (
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+      {images.map((_, index) => (
+        <button 
+          type="button" 
+          class={`carousel-indicator w-3 h-3 rounded-full ${index === 0 ? 'bg-white' : 'bg-white/50 hover:bg-white/80'}`}
+          data-carousel-slide-to={index}
+        ></button>
+      ))}
+    </div>
+  )}
+
+  {images.length > 1 && (
+    <>
+      <button 
+        type="button" 
+        class="carousel-prev absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      >
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+          <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+        </span>
+      </button>
+      <button 
+        type="button" 
+        class="carousel-next absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      >
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+          <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+        </span>
+      </button>
+    </>
+  )}
+</div>
+
+<script>
+  function initCarousels() {
+    const carousels = document.querySelectorAll('[data-carousel-item]');
+    if (carousels.length === 0) return;
+
+    const carouselGroups = new Map();
+    
+    carousels.forEach(item => {
+      const parent = item.closest('.relative.w-full');
+      if (!carouselGroups.has(parent)) {
+        carouselGroups.set(parent, []);
+      }
+      carouselGroups.get(parent).push(item);
+    });
+
+    carouselGroups.forEach((items, parent) => {
+      let currentIndex = 0;
+      const indicators = parent.querySelectorAll('.carousel-indicator');
+      const prevButton = parent.querySelector('.carousel-prev');
+      const nextButton = parent.querySelector('.carousel-next');
+
+      function showSlide(index) {
+        items.forEach((item, i) => {
+          if (i === index) {
+            item.classList.remove('opacity-0', 'z-0');
+            item.classList.add('opacity-100', 'z-10');
+          } else {
+            item.classList.remove('opacity-100', 'z-10');
+            item.classList.add('opacity-0', 'z-0');
+          }
+        });
+
+        indicators.forEach((indicator, i) => {
+          if (i === index) {
+            indicator.classList.remove('bg-white/50');
+            indicator.classList.add('bg-white');
+          } else {
+            indicator.classList.remove('bg-white');
+            indicator.classList.add('bg-white/50');
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % items.length;
+        showSlide(currentIndex);
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        showSlide(currentIndex);
+      }
+
+      prevButton?.addEventListener('click', prevSlide);
+      nextButton?.addEventListener('click', nextSlide);
+
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          currentIndex = index;
+          showSlide(currentIndex);
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCarousels);
+  document.addEventListener('astro:page-load', initCarousels);
+</script>
