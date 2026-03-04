@@ -2,6 +2,39 @@
 import ItemProyecto from './ItemProyecto.astro'; 
 
 const PROYECTS = [
+    {
+        title: 'Gestor de Clientes y Saldos',
+        description: 'Aplicación full-stack para la administración integral de clientes. Permite manejar cuentas de usuarios, gestionar balances y sincronizar datos en la nube desplegada en Vercel, Neon y Render.',
+        imgUrl: ["/images/morosos1.png","/images/morosos2.png","/images/morosos3.png"],
+        linkProyecto: 'https://github.com/TomasAttino/Morosos-backend.git',
+        date: 'Febrero 2026', 
+        tecnologias: [
+        {
+            name: "React", icon: "/iconos/react.svg"
+        },
+        {
+            name: "TypeScript", icon: "/iconos/typescript-original.svg"
+        },
+        {
+            name: "Node.js", icon: "/iconos/nodejs-original.svg"
+        },
+        {
+            name: "Express", icon: "/iconos/express_logo.svg"
+        },
+         {
+            name: "Prisma", icon: "/iconos/prisma_logo.svg"
+        },
+        {
+            name: "PostgreSQL", icon: "/iconos/postsql_logo.svg"
+        },
+        {
+            name: "Vercel", icon: "/iconos/vercel.webp"
+        },
+        {
+            name: "Render", icon: "/iconos/render.svg"
+        }
+        ] 
+  },
      {
         title: "CSGO-Skin-Market - Taller Web II",
         description: "Desarrollo de un Marketplace Fullstack para la compra y venta de skins de CS:GO. Construí el Frontend con Angular, implementando componentes reutilizables y consumo de API REST. El Backend fue desarrollado con Node.js, Express y Prisma, gestionando una base de datos PostgreSQL. Incluye sistema de autenticación segura con JWT y gestión de estado.",
@@ -97,40 +130,8 @@ const PROYECTS = [
             name: "Composer", icon: "/iconos/composer_logo.svg"
         }
         ]
-    },
-    {
-        title: 'Gestor de Clientes y Saldos',
-        description: 'Aplicación full-stack para la administración integral de clientes. Permite manejar cuentas de usuarios, gestionar balances y sincronizar datos en la nube desplegada en Vercel, Neon y Render.',
-        imgUrl: ["/images/morosos1.png","/images/morosos2.png","/images/morosos3.png"],
-        linkProyecto: 'https://github.com/TomasAttino/Morosos-backend.git',
-        date: 'Febrero 2026', 
-        tecnologias: [
-        {
-            name: "React", icon: "/iconos/react.svg"
-        },
-        {
-            name: "TypeScript", icon: "/iconos/typescript-original.svg"
-        },
-        {
-            name: "Node.js", icon: "/iconos/nodejs-original.svg"
-        },
-        {
-            name: "Express", icon: "/iconos/express_logo.svg"
-        },
-         {
-            name: "Prisma", icon: "/iconos/prisma_logo.svg"
-        },
-        {
-            name: "PostgreSQL", icon: "/iconos/postsql_logo.svg"
-        },
-        {
-            name: "Vercel", icon: "/iconos/vercel-original.svg"
-        },
-        {
-            name: "Render", icon: "/iconos/render.svg"
-        }
-        ] 
-  }
+    }
+    
 ]
 ---
 
